@@ -1,0 +1,179 @@
+
+Enter the Python part 2
+7 Aug 2018
+
+Max Danilyuk
+DevOps, SoftServe at Cisco
+madanyli@cisco.com
+
+* Data Types
+Python has five standard data types:
+
+- boolean
+- numerics
+- sequences
+- mappings
+- files
+- classes
+- instances
+- exceptions
+
+* Boolean 
+
+    - True 
+    - False 
+
+That is False:
+
+    - None
+    - False
+    - zero of any numeric type, for example, 0, 0L, 0.0, 0j.
+    - any empty sequence, for example, '', (), [].
+    - any empty mapping, for example, {}.
+    - instances of user-defined classes, if the class defines a __nonzero__() or __len__() method, when that method returns the integer zero or bool value False. 
+
+* Boolean operation 
+
+    - and; (T and T = T, T and F = F, F and F = F)
+    - or; (T or F = T, T or T = T, F or F = F)
+    - not; (not F = T, not T = F);
+
+Comparisons (support by all types) and return bool
+
+    - <	strictly less than	    operator.lt(a, b)
+    - <=	less than or equal	operator.le(a, b)
+    - >	strictly greater than	operator.gt(a, b)
+    - >=greater than or equal	operator.ge(a, b)
+    - == equal	                operator.eq(a, b)
+    - != not equal              operator.ne(a, b)
+    - is object identity	    operator.is(a,b)
+    - is not negated object identity    operator.is_not(a,b)
+
+
+
+* Where comparisons is used? (compound statements)
+
+    if_stmt ::=  "if" expression ":" suite
+             ( "elif" expression ":" suite )*
+             ["else" ":" suite]
+
+    while_stmt ::=  "while" expression ":" suite
+                ["else" ":" suite]
+
+    for_stmt ::=  "for" target_list "in" expression_list ":" suite
+              ["else" ":" suite]
+    
+    try_stmt  ::=  try1_stmt | try2_stmt
+    try1_stmt ::=  "try" ":" suite
+                    ("except" [expression [("as" | ",") identifier]] ":" suite)+
+                    ["else" ":" suite]
+                    ["finally" ":" suite]
+    try2_stmt ::=  "try" ":" suite
+                    "finally" ":" suite
+
+
+* Task:
+    1) Write mail wrapper that iterate over mail_pool, if string contain @google.com, 
+    print "https://google.com", if @yandex : "Not today Johny", in other case "DuckNGo"
+    2) Write wrapper for user input, if user is "root" print "Allowed", if "Onwer"
+     print "ReadOnly", in other cases "NotAllowed"
+    3) print random number (>0 <100), until it will be more than 75
+
+* Numbers 
+
+- int 
+- float
+- long
+- complex
+
+* Number(2)
+
+.image IntegersOperations.png _ 1000
+
+* Number Tasks
+
+1. How much will backups will take in 24 months if right now it`s 5Gb per week, and increase if data shrink will reduce it by 27%
+2. Capacity managment team said to you that network traffic will increase up to 39% for each 50 customer you have, right now max load on ENI is 52Mb/said 
+3. Your team is going to present your SLA(Service-level agreement) that server will be online 87% persent of time, how long could you have downtimes per year?
+
+* Sequence Types 
+    - str
+    - unicode
+    - list
+    - tuple
+    - bytearray
+    - buffer
+    - xrange
+
+.image StringOperations.png _ 550
+
+* String Formatting
+
+.link https://docs.python.org/2/library/stdtypes.html#string-formatting-operations PythonDocs
+
+    using "%type"%value
+    using "{}".format(value)
+
+* Dicts 
+
+.link https://docs.python.org/2/library/stdtypes.html#mapping-types-dict Dictionaries
+
+
+Tasks:
+1) Create random dict with 5+ key-values parts; [string]string Sort a list alphabetically in given dictionary by key.
+2) Create random dict with 5+ key-values parts; [string]string Sort a list alphabetically in given dictionary by key.
+3) Create 2 rand dicts with 3+ key-value parts; Compare them and print diff;
+
+* Files
+
+.link https://docs.python.org/2/library/stdtypes.html#file-objects FileObjects
+
+Use with statements:
+    
+    with open("hello.txt") as f:
+    for line in f:
+        print line,
+
+* Classes
+
+.link https://docs.python.org/2/library/stdtypes.html#classes-and-class-instances Classess
+
+* Execeptions
+
+    If something goes can go wrong it will
+
+.link https://docs.python.org/3/tutorial/errors.html
+
+    #Handling
+    while True:
+    try:
+        x = int(input("Please enter a number: "))
+        break
+    except ValueError:
+        print("Oops!  That was no valid number.  Try again...")
+
+    #Create your own 
+    class NewExeption(Exception):
+    pass
+    
+    #Raise if needed:
+    raise NewExeption
+
+
+* Execeptions(2)
+
+    # Continue
+    def x (x,y):
+        try:
+            result = x / y
+        except ZeroDivisionError:
+            print "division by zero!"
+        else:
+            print "result is", result
+        finally:
+            print "executing finally clause"
+    
+
+* QA 
+
+Any questions?

@@ -1,0 +1,103 @@
+
+Enter the Python part 1 
+7 Aug 2018
+
+Max Danilyuk
+DevOps, SoftServe at Cisco
+madanyli@cisco.com
+
+
+* What Python?
+Python is an *interpreted* *high-level* programming language for *general-purpose* programming. .utl
+
+- What`s interpreted?
+- Why general purpose?
+- Why high-level?
+
+
+* Why Python?
+- Dynamically-typed;
+.code python-doc.py /^#Exp1/,/^#EExp1/
+- Modular
+.code python-doc.py /^#Exp2/,/^#EExp2/
+* Why Python?(2)
+- Lots of buildin types
+.code python-doc.py /^#Exp3/,/^#EExp3/
+* Why Python? (3)
+- Lots of existing utils
+.link https://github.com/vinta/awesome-python AwesomeTools 
+- Community:
+    GitHub; StackOverFlow; Python.org; Pyslackers
+
+* How Python?
+- So you (hopefully) installed python on your Linux/Mac/Windows/RaspberryPi/Calculator/Washing Maching
+
+- What next?
+    Python interpreter:
+        python(enter)
+    #If that don`t work check where exactly do you istall it: $PATH, $PYTHONPATH etc.
+    Scripting
+        python test.py
+        ./test.py
+
+* How Python? (2)
+- So what exactly happeninig than you press 
+    python test.py
+Or double-click on icon (we won't blame you yet, but soon Yurij will)
+.image common-technique-in-bypassing-stuff-in-python-3-638.png
+
+* How Python? (3)
+- So what is byte-code?
+It's reprisenting your program as number of low-level commands; 
+- F.ex:
+
+        def foo(a):
+            x = 3
+            return x + a
+
+        import dis
+        dis.dis(foo.func_code)
+        2           0 LOAD_CONST               1 (3)
+                    3 STORE_FAST               1 (x)
+
+        3           6 LOAD_FAST                1 (x)
+                    9 LOAD_FAST                0 (a)
+                    12 BINARY_ADD
+                    13 RETURN_VALUE
+
+* How Python? (4)
+That is low Level commands?
+
+- it's C! (CPython) ~ 95 of all
+- or Java (Jython) 
+- or .Net (IronPython) 
+^ last to of them for ability to integrate and rule you Java or .Net App with Python(but actually that's pretty rare case)
+
+* So Python is panacea? 
+Nope.
+
+Why?
+
+- It's slow. I mean really, really slow. A lot of times this doesn't matter, but it definitely means you'll need another language for those performance-critical bits;
+- It's missing a few features that can be useful to library/generic code and IMHO are simplicity taken to unhealthy extremes;
+- It's far from the metal. Need to write threading primitives or kernel code or something? Good luck.
+- Doc's mostly written as last step and bit chaotic (take a look at perldoc, than you have a min);
+- Your starting to forget how things are working;
+
+
+* Should you try and master it?
+
+*Yep!* 
+
+- It's fast to start;
+- It's easy;
+- Time for creating app in python is low even for newbies;
+- It's clear and readable;
+- Greate community;
+- Versality had lots of existing libs/packages/frameworks/projects in all imaganable ;
+- It's flexible;
+- It's everywhere.
+
+* Q&A
+
+Any questions? 
