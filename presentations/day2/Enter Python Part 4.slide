@@ -1,0 +1,183 @@
+Enter the Python part 4
+
+13 Aug 2018
+
+Max Danilyuk
+DevOps, SoftServe at Cisco
+madanyli@cisco.com
+
+* Classes
+
+Boring OOP Terminology:
+
+    https://www.tutorialspoint.com/python/python_classes_objects.htm
+
+How to create your own class? Easy enougth:
+
+    class Employee:
+    'Common base class for all employees' # Same as declaring Employee.__doc__
+    empCount = 0
+
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+        Employee.empCount += 1
+   
+    def displayCount(self):
+        print "Total Employee %d" % Employee.empCount
+
+    def displayEmployee(self):
+        print "Name : ", self.name,  ", Salary: ", self.salary
+
+* Objects (2)
+
+How to create an object of this class?
+
+    "This would create first object of Employee class"
+    emp1 = Employee("Zara", 2000)
+    "This would create second object of Employee class"
+    emp2 = Employee("Manni", 5000)
+
+How to get object attribute?
+
+    emp1.displayEmployee()
+    emp2.displayEmployee()
+    print "Total Employee %d" % Employee.empCount
+
+Messiong around with attributes? Sure
+
+    emp1.age = 7  # Add an 'age' attribute.
+    emp1.age = 8  # Modify 'age' attribute.
+    del emp1.age  # Delete 'age' attribute.
+
+* Classes (3)
+
+Some basic attributes
+
+    __dict__ − Dictionary containing the class's namespace.
+
+    __doc__ − Class documentation string or none, if undefined.
+
+    __name__ − Class name.
+
+    __module__ − Module name in which the class is defined.
+    This attribute is "__main__" in interactive mode.
+
+    __bases__ − A possibly empty tuple containing the base classes,
+     in the order of their occurrence in the base class list.
+
+* Class inherince
+
+    class Parent:        # define parent class
+        parentAttr = 100
+        def __init__(self):
+            print "Calling parent constructor"
+        def parentMethod(self):
+            print 'Calling parent method'
+        def setAttr(self, attr):
+            Parent.parentAttr = attr
+        def getAttr(self):
+            print "Parent attribute :", Parent.parentAttr
+
+    class Child(Parent): # define child class
+        def __init__(self):
+            print "Calling child constructor"
+        def childMethod(self):
+            print 'Calling child method'
+
+    c = Child()          # instance of child -> Calling child constructor
+    c.childMethod()      # child calls its method -> Calling child method
+    c.parentMethod()     # calls parent's method -> Calling parent method
+    c.setAttr(200)       # again call parent's method
+    c.getAttr()          # again call parent's method -> Parent attribute : 200
+
+    
+* Overwriting methods 
+
+    class Parent:        # define parent class
+        def myMethod(self):
+            print 'Calling parent method'
+
+    class Child(Parent): # define child class
+        def myMethod(self):
+            print 'Calling child method'
+
+        c = Child()          # instance of child
+        c.myMethod()         # child calls overridden method -> Calling child method
+
+* Overloading Methods
+
+    __init__ ( self [,args...] )
+    Constructor (with any optional arguments)
+    Sample Call : obj = className(args)
+    ===
+    __del__( self )
+    Destructor, deletes an object
+    Sample Call : del obj
+    ===
+    __repr__( self )
+    Evaluable string representation
+    Sample Call : repr(obj)
+    ===
+    __str__( self )
+    Printable string representation
+    Sample Call : str(obj)
+    ===
+    __cmp__ ( self, x )
+    Object comparison
+    Sample Call : cmp(obj, x)
+
+* Overloading Operators
+
+    class Vector:
+        def __init__(self, a, b):
+            self.a = a
+            self.b = b
+
+        def __str__(self):
+            return 'Vector (%d, %d)' % (self.a, self.b)
+   
+        def __add__(self,other):
+            return Vector(self.a + other.a, self.b + other.b)
+
+    v1 = Vector(2,10)
+    v2 = Vector(5,-2)
+    print v1 + v2 -> Vector(7,8)
+
+* Hiding some data
+
+        #!/usr/bin/python
+
+        class JustCounter:
+            __secretCount = 0
+        
+        def count(self):
+            self.__secretCount += 1
+            print self.__secretCount
+
+        counter = JustCounter()
+        counter.count() -> 1
+        counter.count() -> 
+        print counter.__secretCount -> AttributeError:
+            JustCounter instance has no attribute '__secretCount'
+        print counter._JustCounter__secretCount
+            2 
+
+* Best practice
+
+.link https://stevenloria.com/python-best-practice/
+
+* Q/A
+
+Any questions?
+No? so there is some practice fot the next time
+
+Create DB class which have connect, write, read, methods, attributes 
+like db-s which contain tables which contains data.
+Reading and writing is possible only after connection
+(you can create your own way to handle that), data should be accessable 
+if db and table is provided. You can do that as complicate as u want ;)
+(contextes,commits,network,encoding,validation,roll-backs,dumps etc..)
+
+That should be fun. 
+See ya next time.

@@ -1,0 +1,274 @@
+Enter the Python part 3 
+13 Aug 2018
+
+Max Danilyuk
+DevOps, SoftServe at Cisco
+madanyli@cisco.com
+
+* Let's repeat! Types
+
+Nubmers: int, float, complex
+
+    x = 2 
+    y = 3.2
+    z = 1+5j
+
+Sequence Types: strings, list, tuples, dicts/hahs/maps
+
+    x = "Cool string"
+    y = ["1", 2, {3:4}]
+    z = (1, 2, 3)
+    a = {"key1": "value1",
+         "key2": x}
+    
+    Question:
+    for val in [x,y,z,a]:
+        for x in val:
+            print(x)
+    ???
+
+
+
+* Let`s repeat!(2) Compound statements
+
+For: 
+
+    for value in range(5):
+        print(x)
+If:
+
+    if statememt:
+        do()
+    elif statement2:
+        do()
+    else:
+        do()
+
+While:
+
+    while statement:
+        do()
+
+* Let`s repeat!(2) Controll statement
+
+More controll:
+
+    for x in "XYZ":
+        if x == "X":
+            print x
+            # Enter next loop
+            continue
+        elif x == "Y":
+            print x
+            # Do nothing
+            pass
+        if x == "Z":
+            print x
+            # Exit from loop
+            break
+
+* Function 
+
+    def fib(n):    # write Fibonacci series up to n
+    """Print a Fibonacci series up to n."""
+        a, b = 0, 1
+        while a < n:
+            print(a)
+            a, b = b, a+b
+        print()
+
+    type(fib)
+    <function fib at 10042ed0>
+    f = fib
+    f(100)
+    0 1 1 2 3 5 8 13 21 34 55 89
+    x = fib(100)
+    print(x)
+    ???
+    None
+
+* Function (2)
+Return
+
+    def add(x,y):
+        # exit from function
+        return x+y
+    
+    x = (2,3)
+    print(x)
+    5
+
+Named params
+
+    def connect(user,password,db="prod.xxx.com",port=1232):
+        print(db,port,user,password)
+    
+    connect()
+    TypeError: connect() takes at least 2 arguments (0 given)
+    connect("root","password")
+    ('prod.xxx.com', 1232, 'root', 'password')
+    connect("root","password",db="stage.xxx.com")
+    ('stage.xxx.com', 1232, 'root', 'password') 
+
+* Function (3)
+
+Args 
+
+    def test_var_args(f_arg, *argv):
+        print "first normal arg:", f_arg
+        for arg in argv:
+            print "another arg through *argv :", arg
+
+    test_var_args('yasoob','python','eggs')
+    # 
+    first normal arg: yasoob
+    another arg through *argv : python
+    another arg through *argv : eggs
+
+Kwargs
+
+    def greet_me(**kwargs):
+    if kwargs is not None:
+        for key, value in kwargs.iteritems():
+            print "%s == %s" %(key,value)
+    >>> greet_me(name="yasoob")
+    name == yasoob
+
+
+* Function (4)
+
+Python 3.5+
+
+    We can use metadata to make your life easier(actually not)!!! 
+    def connect(data: str) -> bool:
+        retun "I've tricked u I'm not bool!!!"
+
+
+* Function best practice
+
+PEP8 saying:
+
+    Function names should be lowercase, with words separated by underscores as necessary to improve readability. 
+    mixedCase is allowed only in contexts where that's already the prevailing style
+    ---
+    Surround top-level function and class definitions with two blank lines.
+    ---
+    Use documentation Strings 
+    F.ex:
+    def check2(i, s, h, local=None, receiver=None):
+        """Test an incoming MAIL FROM:<s>, from a client with ip address i.
+        h is the HELO/EHLO domain name.  This is the RFC4408 compliant pySPF2.0
+        interface.  The interface returns an SPF result and explanation only.
+        SMTP response codes are not returned since RFC 4408 does not specify
+        receiver policy.  Applications updated for RFC 4408 should use this
+        interface.
+        Returns (result, explanation) where result in
+        ['pass', 'permerror', 'fail', 'temperror', 'softfail', 'none', 'neutral' ].
+        Example:
+        #>>> check2(i='61.51.192.42', s='liukebing@bcc.com', h='bmsi.com')
+        """
+        res,_,exp = query(i=i, s=s, h=h, local=local, receiver=receiver).check()
+        return res,exp
+
+* Modules
+A module is a file containing Python definitions and statements. The file name is the module name with the suffix .py appended. Within a module, the module’s name (as a string) is available as the value of the global variable `__name__`.
+
+    vim  vim module1.py
+    def module1():
+        print "Yay"
+    :wq 
+
+    import module1; print(module1)
+    <module 'module1' from 'module1.py'>
+    import re; print(re)
+    <module 're' from '/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/re.pyc'>  
+    vim re.py
+    ...
+    import re;print(re)
+
+* Modules (2)
+
+Order in which python search modules 
+
+    import sys
+    for path in sys.path
+
+    pyc/pyo is preferable 
+
+Adding custom path to module:
+
+    sys.path.append("<your_path>")
+
+Finding out what is in module:
+
+    dir(<module>)
+    dir(module1)
+    ['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'test_func']
+
+* Packages 
+
+    sound/                          Top-level package
+      __init__.py               Initialize the sound package
+      formats/                  Subpackage for file format conversions
+              __init__.py
+              wavread.py
+              wavwrite.py
+              aiffread.py
+              aiffwrite.py
+              auread.py
+              auwrite.py
+              ...
+      effects/                  Subpackage for sound effects
+              __init__.py
+              echo.py
+              surround.py
+              reverse.py
+              ...
+      filters/                  Subpackage for filters
+              __init__.py
+              equalizer.py
+              vocoder.py
+              karaoke.py
+              ...
+* Imports 
+
+    import sound  # import all but not usual all (__all__ = ["echo", "surround", "reverse"])
+    from sound import filters # import only sound
+    from ..filters import equalizer # even external packages
+
+* Packages best practice 
+
+Naming 
+    
+    Names that are visible to the user as public parts of the API should follow conventions that
+    reflect usage rather than implementation.
+    ---
+    Modules should have short, all-lowercase names. Underscores can be used in the module name 
+    if it improves readability. Python packages should also have short, all-lowercase names,
+    although the use of underscores is discouraged.
+    ---
+    Use if __name__ == "__main__":   for scriptiom
+
+* Common sence best practice
+
+    Use linters 
+    -- Pytlint https://www.pylint.org/
+    -- pyflakes https://github.com/nvie/pyflakes
+    etc ... 
+    Use formatters:
+    - yapf https://github.com/google/yapf
+    - autopep8 https://github.com/hhatto/autopep8#features
+    etc...
+    Use common sence :)
+
+
+* Lot of practice:
+
+    Login into: https://py.checkio.org/
+    Under ome section do 2 random task (yes I'm lazy I know :P )
+
+* Q/A 
+ 
+Any question?
+Hopefully you are not too tired part 2(4) is comming up right .... 
+NOW! 
