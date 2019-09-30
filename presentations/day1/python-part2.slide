@@ -1,6 +1,6 @@
 
 Enter the Python part 2
-7 Aug 2018
+Sep 2019
 
 Max Danilyuk
 DevOps, SoftServe at Cisco
@@ -13,10 +13,7 @@ Python has five standard data types:
 - numerics
 - sequences
 - mappings
-- files
-- classes
-- instances
-- exceptions
+- objects
 
 * Boolean 
 
@@ -30,7 +27,8 @@ That is False:
     - zero of any numeric type, for example, 0, 0L, 0.0, 0j.
     - any empty sequence, for example, '', (), [].
     - any empty mapping, for example, {}.
-    - instances of user-defined classes, if the class defines a __nonzero__() or __len__() method, when that method returns the integer zero or bool value False. 
+    - instances of user-defined classes, if the class defines a __nonzero__()
+     or __len__() method, when that method returns the integer zero or bool value False. 
 
 * Boolean operation 
 
@@ -50,11 +48,10 @@ Comparisons (support by all types) and return bool
     - is not negated object identity    operator.is_not(a,b)
 
 
-
 * Where comparisons is used? (compound statements)
 
     if_stmt ::=  "if" expression ":" suite
-             ( "elif" expression ":" suite )*
+             ( "elif" expression ":" suite )
              ["else" ":" suite]
 
     while_stmt ::=  "while" expression ":" suite
@@ -72,13 +69,6 @@ Comparisons (support by all types) and return bool
                     "finally" ":" suite
 
 
-* Task:
-    1) Write mail wrapper that iterate over mail_pool, if string contain @google.com, 
-    print "https://google.com", if @yandex : "Not today Johny", in other case "DuckNGo"
-    2) Write wrapper for user input, if user is "root" print "Allowed", if "Onwer"
-     print "ReadOnly", in other cases "NotAllowed"
-    3) print random number (>0 <100), until it will be more than 75
-
 * Numbers 
 
 - int 
@@ -93,7 +83,7 @@ Comparisons (support by all types) and return bool
 * Number Tasks
 
 1. How much will backups will take in 24 months if right now it`s 5Gb per week, and increase if data shrink will reduce it by 27%
-2. Capacity managment team said to you that network traffic will increase up to 39% for each 50 customer you have, right now max load on ENI is 52Mb/said 
+2. Capacity managment team said to you that network traffic will increase up to 39% for each 50 customer you have, right now max load on ENI is 52Mb/s 
 3. Your team is going to present your SLA(Service-level agreement) that server will be online 87% persent of time, how long could you have downtimes per year?
 
 * Sequence Types 
@@ -111,8 +101,16 @@ Comparisons (support by all types) and return bool
 
 .link https://docs.python.org/2/library/stdtypes.html#string-formatting-operations PythonDocs
 
-    using "%type"%value
-    using "{}".format(value)
+    using "%type"%value (types %s %i %f all from C)
+    >>"Hey %s"%("Dude")
+    "Hey Dude"
+    using "{}".format(value) or {0},{n} if args are positional
+    >>"Hey {}".format("Dude")
+    "Hey Dude"
+    using f"{var_name}"(From python 3.5)
+    >>who="Dude"
+    >>f"Hey {who}"
+    >>"Hey Dude"
 
 * Dicts 
 

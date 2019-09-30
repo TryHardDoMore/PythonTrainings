@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+alphabet	../presentations/day1/python-doc.py	/^alphabet = ['a', 'b', 'c']$/;"	kind:variable	line:5
+argparse	../presentations/.history/argparse_20180827015220.py	/^import argparse$/;"	kind:namespace	line:1
+argparse	../presentations/day3/argparse.py	/^import argparse$/;"	kind:namespace	line:1
+argparse.py	../presentations/day3/argparse.py	1;"	kind:file	line:1
+argparse_20180827015214.py	../presentations/.history/argparse_20180827015214.py	1;"	kind:file	line:1
+argparse_20180827015217.py	../presentations/.history/argparse_20180827015217.py	1;"	kind:file	line:1
+argparse_20180827015218.py	../presentations/.history/argparse_20180827015218.py	1;"	kind:file	line:1
+argparse_20180827015220.py	../presentations/.history/argparse_20180827015220.py	1;"	kind:file	line:1
+args	../presentations/.history/argparse_20180827015220.py	/^args = parser.parse_args()$/;"	kind:variable	line:10
+args	../presentations/day3/argparse.py	/^args = parser.parse_args()$/;"	kind:variable	line:10
+dec	../presentations/day1/python-doc.py	/^dec = 1.1$/;"	kind:variable	line:3
+fib	../presentations/day1/python-doc.py	/^def fib(n):$/;"	kind:function	line:9
+fibonacci	../presentations/day1/python-doc.py	/^import fibonacci$/;"	kind:namespace	line:14
+hello	../presentations/day1/python-doc.py	/^hello = 'Hello, World!'$/;"	kind:variable	line:4
+help	../presentations/.history/argparse_20180827015220.py	/^                    help='an integer for the accumulator')$/;"	kind:variable	line:5
+help	../presentations/.history/argparse_20180827015220.py	/^                    help='sum the integers (default: find the max)')$/;"	kind:variable	line:8
+help	../presentations/day3/argparse.py	/^                    help='an integer for the accumulator')$/;"	kind:variable	line:5
+help	../presentations/day3/argparse.py	/^                    help='sum the integers (default: find the max)')$/;"	kind:variable	line:8
+parser	../presentations/.history/argparse_20180827015220.py	/^parser = argparse.ArgumentParser(description='Process some integers.')$/;"	kind:variable	line:3
+parser	../presentations/day3/argparse.py	/^parser = argparse.ArgumentParser(description='Process some integers.')$/;"	kind:variable	line:3
+python-doc.py	../presentations/day1/python-doc.py	1;"	kind:file	line:1
+year	../presentations/day1/python-doc.py	/^year = 2017$/;"	kind:variable	line:2

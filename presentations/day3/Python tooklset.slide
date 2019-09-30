@@ -1,0 +1,245 @@
+Python toolset 
+Sep 2019
+
+Max Danilyuk
+DevOps, SoftServe at Cisco
+madanyli@cisco.com
+
+* Agenda
+ - Build-in libs
+ - Usefull packages
+ - Some practice 
+
+* Default libs list: 
+
+Where are actually loooots of them:
+But for common tasks you with 90% will use some of the next ones:
+    
+    - argparse 
+    - re
+    - os 
+    - sys
+    - socket 
+    - json
+
+* Argparse
+
+The argparse module makes it easy to write user-friendly command-line interfaces.
+So as it may be obviously it just parse user input for your scripts.
+Example:
+
+.code -edit argparse.py
+
+Small task:
+     - write script that takes 2 int inside and make operation on them depends on the flag        (addition/subtraction/multiplication/division)
+
+* Re 
+
+This module provides regular expression matching operations similar to those found in Perl.
+
+    re.match() checks for a match only at the beginning of the string, 
+    re.search() checks for a match anywhere in the string
+    match = re.search(pattern, string)
+    if match:
+        process(match)
+
+Practice:
+Use https://regex101.com/ 
+
+Find all words that starts with "s" in next sentence (don't worry I`ll share it):
+    
+    I hope that a study of very long sentences will arm you with strategies that are almost as diverse as the sentences themselves, such as: starting each clause with the same word, tilting with dependent clauses toward a revelation at the end, padding with parentheticals, showing great latitude toward standard punctuation, rabbit-trailing away from the initial subject, encapsulating an entire life, and lastly, as this sentence is, celebrating the list.
+
+* os
+
+This module provides a portable way of using operating system dependent functionality. 
+
+    #!/usr/bin/python
+
+    import os, sys
+
+    # Open a file
+    fd = os.open( "foo.txt", os.O_RDWR|os.O_CREAT )
+    # Write one string
+    os.write(fd, "This is test")
+    # Close opened file
+    os.close( fd )
+    print "Closed the file successfully!!"
+    # Other way 
+    with open(foo.txt", os.O_RDWR|os.O_CREAT) as fd:
+        wd.write("This is test")
+
+Run `export X=$RANDOM` or 'set x=%RANDOM%' in your shell. Than right what value to gotcha.txt
+
+* sys 
+
+This module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter. It is always available
+
+Small task:
+Show your platform and maxint on it.
+
+
+* socket 
+
+This module provides access to the BSD socket interface. 
+
+Examples only. This should be separate topic (IMHO).
+
+
+    # Echo server program
+    import socket
+
+    HOST = ''                 # Symbolic name meaning all available interfaces
+    PORT = 50007              # Arbitrary non-privileged port
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.bind((HOST, PORT))
+    s.listen(1)
+    conn, addr = s.accept()
+    print 'Connected by', addr
+    while 1:
+        data = conn.recv(1024)
+        if not data: break
+        conn.sendall(data)
+    conn.close()
+    
+
+* socket (2)
+
+    # Echo client program
+    import socket
+
+    HOST = 'daring.cwi.nl'    # The remote host
+    PORT = 50007              # The same port as used by the server
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((HOST, PORT))
+    s.sendall('Hello, world')
+    data = s.recv(1024)
+    s.close()
+    print 'Received', repr(data)
+
+* json 
+
+JSON (JavaScript Object Notation) encoder and decoder.
+
+    import json
+    json.loads('["foo", {"bar":["baz", null, 1.0, 2]}]')
+    ['foo', {'bar': ['baz', None, 1.0, 2]}]
+    import json
+    json.dumps([1, 2, 3, {'4': 5, '6': 7}], separators=(',', ':'))
+    '[1,2,3,{"4":5,"6":7}]'
+    # Console
+    echo '{"json":"obj"}' | python -m json.tool
+    {
+    "json": "obj"
+    }
+
+Let's go to https://next.json-generator.com/ save it to file and read all the "address" fields via script.
+
+* Usefull packages
+
+Here is some usesull one that may become handy. (in random order and mostknown by me and !frameworks and !software products)
+
+    pip
+    requests
+    BeautifulSoup
+    SQLAlchemy
+    IPython
+    virtualenv (for 2.7)
+
+* pip
+
+Wanna install any new package for python? Use pip! It's connected to https://pypi.org/ which is biggest python repository.
+
+    python -m pip install requests
+    pip install requests
+
+Let's install requests will need it later on.
+
+* requests
+
+Http for humans:
+
+    >>> r = requests.get('https://api.github.com/user', auth=('user', 'pass'))
+    >>> r.status_code
+    200
+    >>> r.headers['content-type']
+    'application/json; charset=utf8'
+    >>> r.encoding
+    'utf-8'
+    >>> r.text
+    u'{"type":"User"...'
+    >>> r.json()
+    {u'private_gists': 419, u'total_private_repos': 77, ...}
+
+Using requests get response from http://headers.jsontest.com/ and if response is 200 show your useragent from it. If not return Error message.
+
+* SQLAlchemy
+
+ORM(Object-relational mapping) for DB's
+As high level examle:
+
+    from sqlalchemy import Column, Integer, String
+    >>> class User(Base):
+    ...     __tablename__ = 'users'
+    ...
+    ...     id = Column(Integer, primary_key=True)
+    ...     name = Column(String)
+    ...     fullname = Column(String)
+    ...     password = Column(String)
+    ...
+    ...     def __repr__(self):
+    ...        return "<User(name='%s', fullname='%s', password='%s')>" % (
+    ...                             self.name, self.fullname, self.password)
+
+* BeautifulSoup 
+
+Library for pulling data out of HTML and XML files.
+All the html stuff noone likes ¯\_(ツ)_/¯ 
+https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+
+
+* IPython a.k.a jupiter
+
+Lemmi show you some magic.
+
+* Venv
+
+Imagine you have not 5 and not even 10 python projects. How to solve all dep and not break it? Venv!
+(it's in build-in set from 3.4 but 2.7 needs it to be installed)
+
+
+    virtualenv -p /home/username/opt/python-2.7.7/bin/python my_project
+    source my_project/bin/activate
+    pip install <what_so_ever>
+    deactivate
+    pip freeze | grep <what_so_ever> # It's not here!
+
+Why? cause it was installed in my_project/libs and PythonPath was updated to use it :)
+
+* htttpie 
+
+    Command line http client with easy UI and all needed features 
+
+    http -v PUT httpbin.org/put API-Key:foo hello=world
+
+* jinja 
+
+Templating language for Python
+
+
+    from jinja2 import Template
+    t = Template("Hello {{ something }}!")
+    t.render(something="World")
+        u'Hello World!'
+
+    t = Template("My favorite numbers: {% for n in range(1,10) %}{{n}} " "{% endfor %}")
+    t.render()
+        u'My favorite numbers: 1 2 3 4 5 6 7 8 9 
+
+    
+Let's create some basic nginx configs for 2+ instanses by jinja!
+
+
+* Q/A
+
+    Any questions? 

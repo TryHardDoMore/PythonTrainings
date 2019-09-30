@@ -1,8 +1,14 @@
 #Exp1
-year = 2017
-dec = 1.1
-hello = 'Hello, World!'
-alphabet = ['a', 'b', 'c']
+# Easy to read and understand to anyone
+print('Interest Calculator:')
+
+amount = float(input('Principal amount ?'))
+roi = float(input('Rate of Interest ?'))
+yrs = int(input('Duration (no. of years) ?'))
+
+total = (amount * pow(1 + (roi/100), yrs))
+interest = total - amount
+print('\nInterest = %0.2f' %interest)
 #EExp1
 #Exp2
 >> File 1 

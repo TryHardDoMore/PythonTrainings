@@ -1,5 +1,5 @@
 Enter the Python part 3 
-13 Aug 2018
+Sep 2019
 
 Max Danilyuk
 DevOps, SoftServe at Cisco
@@ -7,7 +7,7 @@ madanyli@cisco.com
 
 * Let's repeat! Types
 
-Nubmers: int, float, complex
+Numbers: int, float, complex
 
     x = 2 
     y = 3.2
@@ -94,7 +94,7 @@ Return
         # exit from function
         return x+y
     
-    x = (2,3)
+    x = add(2,3)
     print(x)
     5
 
@@ -139,13 +139,78 @@ Kwargs
 
 Python 3.5+
 
-    We can use metadata to make your life easier(actually not)!!! 
+    We can use metadata to make your life easier, but optional 
     def connect(data: str) -> bool:
         retun "I've tricked u I'm not bool!!!"
 
 
-* Function best practice
 
+
+* Decorators
+
+Some time you need to use function as input to make code more reliable and avoid dublications
+And there decocator shine) What's decocator
+
+    # For example you have function
+    def plus_one(number):
+       return number + 1
+    
+    """ If you want to implement function that will somehow work with this function return data
+     you have few ways to do it"""
+    # Inside function:
+     def plus_one(number):
+        def add_one(number):
+            return number + 1
+
+        result = add_one(number)
+        return result
+
+* Decorators(2)
+
+    # Using function as input 
+    def plus_one(number):
+        return number + 1
+
+    def function_call(function):
+        number_to_add = 5
+        return function(number_to_add)
+
+    # Using wrapper
+    def uppercase_decorator(function):
+        def wrapper():
+            func = function()
+            make_uppercase = func.upper()
+            return make_uppercase
+
+        return wrapper
+
+    def say_hi():
+        return 'hello there'
+
+    decorate = uppercase_decorator(say_hi)
+    decorate()
+
+* Decocators (3)
+    #Same as previous example 
+    @uppercase_decorator
+    def say_hi():
+        return 'hello there'
+    
+    # You can use multiple decorators 
+    def split_string(function):
+        def wrapper():
+            func = function()
+            splitted_string = func.split()
+            return splitted_string
+        return wrapper
+    
+    # Be carefull with order: bottom to top
+    @split_string
+    @uppercase_decorator
+    def say_hi():
+        return"hello there"
+
+* Function best practice
 PEP8 saying:
 
     Function names should be lowercase, with words separated by underscores as necessary to improve readability. 
@@ -260,12 +325,6 @@ Naming
     - autopep8 https://github.com/hhatto/autopep8#features
     etc...
     Use common sence :)
-
-
-* Lot of practice:
-
-    Login into: https://py.checkio.org/
-    Under ome section do 2 random task (yes I'm lazy I know :P )
 
 * Q/A 
  

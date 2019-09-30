@@ -1,6 +1,6 @@
 
 Enter the Python part 1 
-7 Aug 2018
+Sep 2019
 
 Max Danilyuk
 DevOps, SoftServe at Cisco
@@ -16,34 +16,38 @@ Python is an *interpreted* *high-level* programming language for *general-purpos
 
 
 * Why Python?
-- Dynamically-typed;
+- It's free and open source
+- Cross-platform
+- Easy to read
 .code python-doc.py /^#Exp1/,/^#EExp1/
-- Modular
-.code python-doc.py /^#Exp2/,/^#EExp2/
-* Why Python?(2)
-- Lots of buildin types
-.code python-doc.py /^#Exp3/,/^#EExp3/
+
+* Why Python? (2)
+- High-level
+- OOP (both + and -)
+- It's Safe (no poiters at least you rly want it)
+
 * Why Python? (3)
 - Lots of existing utils
 .link https://github.com/vinta/awesome-python AwesomeTools 
-- Community:
+- Great community:
     GitHub; StackOverFlow; Python.org; Pyslackers
+- It's everywhere
 
 * How Python?
 - So you (hopefully) installed python on your Linux/Mac/Windows/RaspberryPi/Calculator/Washing Maching
+If not let's start with that;
 
 - What next?
     Python interpreter:
-        python(enter)
-    #If that don`t work check where exactly do you istall it: $PATH, $PYTHONPATH etc.
+        python --version
+    #If that don`t work check where exactly do you istall it and append to $PATH
     Scripting
         python test.py
-        ./test.py
+        ./test.py (if shebang #!<python exceution>)
 
 * How Python? (2)
 - So what exactly happeninig than you press 
     python test.py
-Or double-click on icon (we won't blame you yet, but soon Yurij will)
 .image common-technique-in-bypassing-stuff-in-python-3-638.png
 
 * How Python? (3)
@@ -70,8 +74,7 @@ That is low Level commands?
 
 - it's C! (CPython) ~ 95 of all
 - or Java (Jython) 
-- or .Net (IronPython) 
-^ last to of them for ability to integrate and rule you Java or .Net App with Python(but actually that's pretty rare case)
+- or .Net (IronPython)
 
 * So Python is panacea? 
 Nope.
@@ -82,7 +85,6 @@ Why?
 - It's missing a few features that can be useful to library/generic code and IMHO are simplicity taken to unhealthy extremes;
 - It's far from the metal. Need to write threading primitives or kernel code or something? Good luck.
 - Doc's mostly written as last step and bit chaotic (take a look at perldoc, than you have a min);
-- Your starting to forget how things are working;
 
 
 * Should you try and master it?
@@ -98,6 +100,94 @@ Why?
 - It's flexible;
 - It's everywhere.
 
-* Q&A
 
-Any questions? 
+* So let's begin our jorney
+
+Goal: 
+  - Small fully functional web application with Flask - one of the more popular frameworks
+.image Flask.png
+
+* Step 1: Making first steps:
+Variables:  
+  
+  - Use a sequence of letters either in lowercase (a to z) or uppercase (A to Z).
+    however, you can also mix up digits (0 to 9) or an underscore (_)
+    but can’t use digits to begin an identifier name
+  - variable declaration: x = "first var"/1/1.1/etc;
+
+Functions: 
+  
+  - function call: <function_name>(args);
+  - comments: ^#<comment> one liner or """ <comment> """ for multiliner;
+  - levels are separated by 4 spaces or tabs but not use both of them in single place;
+
+* Step 2: 
+Keywords: 
+  
+  help> keywords
+
+  False               def                 if                  raise
+  None                del                 import              return
+  True                elif                in                  try
+  and                 else                is                  while
+  as                  except              lambda              with
+  assert              finally             nonlocal            yield
+  break               for                 not
+  class               from                or
+  continue            global              pass
+
+* Step 3 
+Statements:
+
+What Is A Statement?
+A statement in Python is a logical instruction which Python interpreter can read and execute. 
+In Python, it could be an expression or an assignment statement.
+
+  # Using Arithmetic expressions
+  >>> ((10 + 2) * 100 / 5 - 200)
+  40.0
+  # Using functions in an expression
+  >>> pow(2, 10)
+  1024
+  # Using eval in an expression
+  >>> eval( "2.5+2.5" )
+  5.0
+  # Syntax
+  variable = expression
+  
+* 3.1 Statements (2)
+
+  # Value-Based Expression:
+  >>> test = "Learn Python"
+  >>> id(test)
+  6589040
+  
+  # Variable to variable.
+  >>> test = "Learn Python"
+  >>> id(test)
+  6589424
+  >>> another_test = test
+  >>> id(another_test)
+  6589424
+
+  # An Operation
+  >>> test = 2 * 5
+  >>> print(test)
+  10
+  >>> type(test)
+  <class 'int'>
+
+* Statements(3)
+Augmented Assignment Statement
+
+  x += y is same as x = x+y
+
+  >>> my_tuple = (10, 20, 30)
+  >>> my_tuple += (40, 50,)
+  >>> print(my_tuple)
+  (10, 20, 30, 40, 50)
+
+  >>> list_vowels = ['a','e','i']
+  >>> list_vowels += ['o', 'u',]
+  >>> print(list_vowels)
+  ['a', 'e', 'i', 'o', 'u']
